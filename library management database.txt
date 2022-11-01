@@ -301,3 +301,37 @@ INSERT INTO tbl_book_authors
 		('18','J.R.R. Tolkien'),
 		('19','George R.R. Martin'),
 		('20','Mark Lee');
+		
+		
+		
+		
+		
+		
+--  How many copies of the book titled "The Lost Tribe" are owned by the library branch whose name is "Sharpstown"?
+SELECT copies.book_copies_BranchID AS Branch_ID, branch.library_branch_BranchName AS Branch_Name,
+	   copies.book_copies_No_Of_Copies AS Number_of_Copies,
+	   book.book_Title AS Book_Title
+	   FROM tbl_book_copies AS copies
+			INNER JOIN tbl_book AS book ON copies.book_copies_BookID = book.book_BookID
+			INNER JOIN tbl_library_branch AS branch ON book_copies_BranchID = branch.library_branch_BranchID
+	   WHERE book.book_Title = "The Lost Tribe" AND branch.library_branch_BranchName = "Sharpstown" 
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+		
+-- 2- How many copies of the book titled "The Lost Tribe" are owned by each library branch? 
+select tbl_book.book_Title,
+tbl_library_branch.library_branch_BranchName,
+tbl_book_copies.book_copies_No_Of_Copies
+
+from  tbl_book_copies
+inner join tbl_book on tbl_book.book_BookID = tbl_book_copies.book_copies_BookID 
+inner join tbl_library_branch on tbl_book_copies.book_copies_BranchID = tbl_library_branch.library_branch_BranchID
+
+where book_Title = "The Lost Tribe"
